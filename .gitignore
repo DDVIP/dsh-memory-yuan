@@ -1,0 +1,12 @@
+# 运行态：索引、快照、锁、备份、命中计数
+.dsh-memory/
+*.bak
+*.tmp
+# 本机导出/试跑产物
+docs/sample-vault/
+# 编辑器
+.vscode/
+.idea/
+.DS_Store
+scripts/_*.mjs
+*.bak

@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 860" width="1240" height="860" font-family="system-ui, 'Segoe UI', 'Microsoft YaHei', sans-serif">
+  <rect width="1240" height="860" fill="#0f1117"/>
+  <rect x="0" y="0" width="1240" height="64" fill="#12151c"/>
+  <line x1="0" y1="64" x2="1240" y2="64" stroke="#262b36"/>
+
+  <text x="40" y="40" fill="#e6e9ef" font-size="19" font-weight="600">记忆</text>
+  <text x="96" y="40" fill="#8b93a3" font-size="12">这一轮带了什么，也能翻全部</text>
+  <text x="1200" y="40" fill="#8b93a3" font-size="11" text-anchor="end">59 条 · 今天写入 2 · 读 7</text>
+
+  <g>
+    <rect x="40" y="84" width="191" height="64" rx="8" fill="#171a21" stroke="#262b36"/>
+    <text x="54" y="106" fill="#8b93a3" font-size="11">全部记忆</text>
+    <text x="54" y="134" fill="#e6e9ef" font-size="24" font-weight="600">59</text>
+    <rect x="247" y="84" width="191" height="64" rx="8" fill="#171a21" stroke="#262b36"/>
+    <text x="261" y="106" fill="#8b93a3" font-size="11">已确认</text>
+    <text x="261" y="134" fill="#4ade80" font-size="24" font-weight="600">44</text>
+    <rect x="454" y="84" width="191" height="64" rx="8" fill="#171a21" stroke="#262b36"/>
+    <text x="468" y="106" fill="#8b93a3" font-size="11">待确认</text>
+    <text x="468" y="134" fill="#fbbf24" font-size="24" font-weight="600">3</text>
+    <rect x="661" y="84" width="191" height="64" rx="8" fill="#171a21" stroke="#262b36"/>
+    <text x="675" y="106" fill="#8b93a3" font-size="11">已废弃</text>
+    <text x="675" y="134" fill="#6b7280" font-size="24" font-weight="600">12</text>
+    <rect x="868" y="84" width="332" height="64" rx="8" fill="#171a21" stroke="#262b36"/>
+    <text x="882" y="106" fill="#8b93a3" font-size="11">L0 注入预算</text>
+    <text x="1186" y="106" fill="#8b93a3" font-size="11" text-anchor="end">773 / 800 字</text>
+    <rect x="882" y="118" width="304" height="6" rx="3" fill="#222732"/>
+    <rect x="882" y="118" width="294" height="6" rx="3" fill="#7cb8ff"/>
+    <text x="882" y="140" fill="#5f6779" font-size="10">97% · 再写 1 条就该收一条了</text>
+  </g>
+
+  <g>
+    <rect x="40" y="168" width="780" height="34" rx="8" fill="#171a21" stroke="#262b36"/>
+    <text x="56" y="190" fill="#5f6779" font-size="12">搜标题、正文、标签…</text>
+    <text x="804" y="190" fill="#5f6779" font-size="11" text-anchor="end">⌘K</text>
+  </g>
+
+  <g font-size="11">
+    <rect x="40" y="216" width="52" height="24" rx="12" fill="#1d2a3a" stroke="#3b5a80"/>
+    <text x="66" y="232" fill="#a9cdf5" text-anchor="middle">全部</text>
+    <rect x="100" y="216" width="62" height="24" rx="12" fill="transparent" stroke="#262b36"/>
+    <text x="131" y="232" fill="#8b93a3" text-anchor="middle">decision</text>
+    <rect x="170" y="216" width="76" height="24" rx="12" fill="transparent" stroke="#262b36"/>
+    <text x="208" y="232" fill="#8b93a3" text-anchor="middle">preference</text>
+    <rect x="254" y="216" width="74" height="24" rx="12" fill="transparent" stroke="#262b36"/>
+    <text x="291" y="232" fill="#8b93a3" text-anchor="middle">knowledge</text>
+    <rect x="336" y="216" width="104" height="24" rx="12" fill="transparent" stroke="#262b36"/>
+    <text x="388" y="232" fill="#8b93a3" text-anchor="middle">project-state</text>
+    <rect x="448" y="216" width="86" height="24" rx="12" fill="transparent" stroke="#262b36"/>
+    <text x="491" y="232" fill="#8b93a3" text-anchor="middle">experience</text>
+    <line x1="552" y1="222" x2="552" y2="234" stroke="#2c3240"/>
+    <rect x="562" y="216" width="52" height="24" rx="12" fill="transparent" stroke="#262b36"/>
+    <text x="588" y="232" fill="#8b93a3" text-anchor="middle">已确认</text>
+    <rect x="622" y="216" width="62" height="24" rx="12" fill="transparent" stroke="#262b36"/>
+    <text x="653" y="232" fill="#8b93a3" text-anchor="middle">待确认</text>
+    <text x="820" y="233" fill="#8b93a3" font-size="11" text-anchor="end">最近更新 ▾</text>
+  </g>
+
+  <g>
+    <line x1="40" y1="264" x2="820" y2="264" stroke="#222732"/>
+    <text x="40" y="284" fill="#8b93a3" font-size="10">59 条 · 第 1 / 2 页</text>
+
+    <g>
+      <circle cx="48" cy="312" r="4" fill="#4ade80"/>
+      <text x="62" y="309" fill="#e6e9ef" font-size="13" font-weight="500">唯一写入源：vault 文件，旧 memory 工具只留流水</text>
+      <text x="62" y="326" fill="#c792ea" font-size="10">decision · 读过 3 · 命中 2</text>
+      <text x="820" y="317" fill="#5f6779" font-size="10" text-anchor="end">10-16 14:20</text>
+      <line x1="40" y1="338" x2="820" y2="338" stroke="#191d26"/>
+    </g>
+    <g>
+      <circle cx="48" cy="366" r="4" fill="#4ade80"/>
+      <text x="62" y="363" fill="#e6e9ef" font-size="13" font-weight="500">主人定的三条规矩：动房间以外先说、给沨写信不用问</text>
+      <text x="62" y="380" fill="#ffb86b" font-size="10">decision · 读过 11 · 命中 6 · 置顶</text>
+      <text x="820" y="371" fill="#5f6779" font-size="10" text-anchor="end">11-12 09:03</text>
+      <line x1="40" y1="392" x2="820" y2="392" stroke="#191d26"/>
+    </g>
+    <g>
+      <circle cx="48" cy="420" r="4" fill="#fbbf24"/>
+      <text x="62" y="417" fill="#e6e9ef" font-size="13" font-weight="500">记忆星图已上线：侧边栏 tab，节点=记忆、边=标签与标题词</text>
+      <text x="62" y="434" fill="#7cb8ff" font-size="10">project-state · 待确认 · 读过 0 · 命中 1</text>
+      <text x="820" y="425" fill="#5f6779" font-size="10" text-anchor="end">11-23 22:50</text>
+      <line x1="40" y1="446" x2="820" y2="446" stroke="#191d26"/>
+    </g>
+    <g>
+      <circle cx="48" cy="474" r="4" fill="#4ade80"/>
+      <text x="62" y="471" fill="#e6e9ef" font-size="13" font-weight="500">Seed-VC 唱歌链路已跑通：解释器、HF 镜像、dac 桩</text>
+      <text x="62" y="488" fill="#6ee7b7" font-size="10">knowledge · 读过 2 · 命中 3</text>
+      <text x="820" y="479" fill="#5f6779" font-size="10" text-anchor="end">11-22 13:04</text>
+      <line x1="40" y1="500" x2="820" y2="500" stroke="#191d26"/>
+    </g>
+    <g>
+      <circle cx="48" cy="528" r="4" fill="#6b7280"/>
+      <text x="62" y="525" fill="#8b93a3" font-size="13" font-weight="500">反思任务结束后不截屏</text>
+      <text x="62" y="542" fill="#6b7280" font-size="10">experience · 已废弃 · 被「记忆插件上线」取代</text>
+      <text x="820" y="533" fill="#5f6779" font-size="10" text-anchor="end">11-16 20:11</text>
+      <line x1="40" y1="554" x2="820" y2="554" stroke="#191d26"/>
+    </g>
+    <g>
+      <circle cx="48" cy="582" r="4" fill="#4ade80"/>
+      <text x="62" y="579" fill="#e6e9ef" font-size="13" font-weight="500">写入失败的报错要指到真正失败的那一步</text>
+      <text x="62" y="596" fill="#f9a8d4" font-size="10">experience · 读过 1 · 命中 4</text>
+      <text x="820" y="587" fill="#5f6779" font-size="10" text-anchor="end">11-22 14:49</text>
+    </g>
+
+    <g>
+      <rect x="40" y="612" width="780" height="72" rx="8" fill="#141821" stroke="#262b36" stroke-dasharray="4 4"/>
+      <text x="56" y="634" fill="#8b93a3" font-size="11">体检建议：3 条「已确认但没写出处」，1 条「可能没用」</text>
+      <text x="56" y="652" fill="#5f6779" font-size="10">只出单子，不自动改；点开看「为什么」再决定</text>
+      <rect x="700" y="630" width="104" height="26" rx="6" fill="#1d2a3a" stroke="#3b5a80"/>
+      <text x="752" y="647" fill="#a9cdf5" font-size="11" text-anchor="middle">查看体检单</text>
+    </g>
+  </g>
+
+  <g>
+    <rect x="840" y="84" width="360" height="600" rx="10" fill="#171a21" stroke="#2c3240"/>
+    <text x="860" y="112" fill="#e6e9ef" font-size="14" font-weight="600">唯一写入源：vault 文件，</text>
+    <text x="860" y="132" fill="#e6e9ef" font-size="14" font-weight="600">旧 memory 工具只留流水</text>
+    <text x="860" y="152" fill="#8b93a3" font-size="10">decision · 已确认 · 读过 3 次 · 更新 10-16 14:20</text>
+    <text x="860" y="168" fill="#8b93a3" font-size="10">证据：2026-11-22 22:07 主人说「定下来吧」</text>
+    <line x1="860" y1="184" x2="1180" y2="184" stroke="#262b36"/>
+    <text x="860" y="206" fill="#c9cfdb" font-size="11">2026-11-22 主人说「定下来吧」，定下记忆</text>
+    <text x="860" y="224" fill="#c9cfdb" font-size="11">的唯一写入源。</text>
+    <text x="860" y="250" fill="#c9cfdb" font-size="11">长期事实（规矩、偏好、经验、项目状态、认</text>
+    <text x="860" y="268" fill="#c9cfdb" font-size="11">识）一律写 vault 文件，库在</text>
+    <text x="860" y="286" fill="#c9cfdb" font-size="11">C:\Users\17207\.dsh\worlds\default\memory</text>
+    <text x="860" y="304" fill="#c9cfdb" font-size="11">，一条一个 md，改就新建并把旧的标</text>
+    <text x="860" y="322" fill="#c9cfdb" font-size="11">status: superseded，不覆盖。</text>
+
+    <line x1="860" y1="350" x2="1180" y2="350" stroke="#262b36"/>
+
+    <rect x="860" y="368" width="92" height="28" rx="6" fill="#1a3324" stroke="#2f6b45"/>
+    <text x="906" y="387" fill="#7ee2a8" font-size="11" text-anchor="middle">设为已确认</text>
+    <rect x="962" y="368" width="92" height="28" rx="6" fill="#171a21" stroke="#3a2f22"/>
+    <text x="1008" y="387" fill="#f0b47a" font-size="11" text-anchor="middle">标为有争议</text>
+    <rect x="1064" y="368" width="92" height="28" rx="6" fill="#171a21" stroke="#3a2a2e"/>
+    <text x="1110" y="387" fill="#f19aa6" font-size="11" text-anchor="middle">标为已废弃</text>
+
+    <rect x="860" y="410" width="140" height="30" rx="6" fill="#171a21" stroke="#2c3240"/>
+    <text x="930" y="430" fill="#c9cfdb" font-size="11" text-anchor="middle">在图里高亮它</text>
+    <rect x="1010" y="410" width="110" height="30" rx="6" fill="#171a21" stroke="#2c3240"/>
+    <text x="1065" y="430" fill="#c9cfdb" font-size="11" text-anchor="middle">复制正文</text>
+
+    <text x="860" y="470" fill="#8b93a3" font-size="10">关联（点开跳星图）</text>
+    <rect x="860" y="480" width="128" height="24" rx="12" fill="#1a2230" stroke="#2c3240"/>
+    <text x="924" y="496" fill="#a9cdf5" font-size="10" text-anchor="middle">记忆插件</text>
+    <rect x="996" y="480" width="112" height="24" rx="12" fill="#1a2230" stroke="#2c3240"/>
+    <text x="1052" y="496" fill="#a9cdf5" font-size="10" text-anchor="middle">vault</text>
+
+    <line x1="860" y1="524" x2="1180" y2="524" stroke="#262b36"/>
+    <text x="860" y="548" fill="#5f6779" font-size="10">文件：Decisions/唯一写入源…-mem_20261122t050410.md</text>
+    <text x="860" y="566" fill="#5f6779" font-size="10">打开所在文件夹 ↗</text>
+
+    <text x="860" y="600" fill="#5f6779" font-size="10">点行 = 看这里；行内点状态点 = 直接换状态</text>
+    <text x="860" y="618" fill="#5f6779" font-size="10">（改内容仍在文件里，UI 不编辑正文）</text>
+  </g>
+
+  <text x="40" y="700" fill="#4b5261" font-size="10">↑ 线框示意，不是最终视觉：真实界面跟着宿主暗亮主题走</text>
+
+  <g>
+    <line x1="0" y1="760" x2="1240" y2="760" stroke="#222732"/>
+    <text x="40" y="790" fill="#8b93a3" font-size="11">第 1 / 2 页 · 每页 50</text>
+    <rect x="170" y="776" width="28" height="24" rx="6" fill="#171a21" stroke="#2c3240"/>
+    <text x="184" y="792" fill="#8b93a3" font-size="11" text-anchor="middle">←</text>
+    <rect x="204" y="776" width="28" height="24" rx="6" fill="#1d2a3a" stroke="#3b5a80"/>
+    <text x="218" y="792" fill="#a9cdf5" font-size="11" text-anchor="middle">1</text>
+    <rect x="238" y="776" width="28" height="24" rx="6" fill="#171a21" stroke="#2c3240"/>
+    <text x="252" y="792" fill="#8b93a3" font-size="11" text-anchor="middle">2</text>
+    <rect x="272" y="776" width="28" height="24" rx="6" fill="#171a21" stroke="#2c3240"/>
+    <text x="286" y="792" fill="#8b93a3" font-size="11" text-anchor="middle">→</text>
+    <text x="1200" y="792" fill="#5f6779" font-size="10" text-anchor="end">数据：vault 扫盘 · 索引 .dsh-memory/index.json</text>
+  </g>
+</svg>

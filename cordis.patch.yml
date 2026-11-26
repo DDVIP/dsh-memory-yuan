@@ -1,0 +1,4 @@
+# memory-yuan bundle 的补丁层：把 memory-yuan 自己挂成一个 Cordis 插件。
+- insert:
+    - id: memory-yuan
+      name: dsh-memory-yuan
