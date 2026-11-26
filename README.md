@@ -111,14 +111,16 @@ node scripts/查原话.mjs --list                    # 只列会话，不解压�
 
 ## 共存（这台机器上还有别的记忆来源）
 
-`memory_lint` 会顺带检测 `dsh-world`：读 `profiles/*/node_modules/dsh-world/package.json` 拿版本、读 `worlds/*/archive.sqlite` 拿归档库，检测到时在输出末尾多一行——
+别处可能还装着别的记忆类插件，各有各的写法（有的写 jsonl、有的写 sqlite、有的在远程）。vault 只读自己目录下的 Markdown，不读别人的库，也不会互相覆盖。
+
+`memory_lint` 会顺带看看这台机器上有没有 `dsh-world`：读 `profiles/*/node_modules/dsh-world/package.json` 拿版本、读 `worlds/*/archive.sqlite` 拿归档库，检测到时在输出末尾多一行——
 
 ```
 共存：这台机器还装了 dsh-world 0.8.5，它的原话归档在 default 的 archive.sqlite
 （跟 vault 不互通）。原话走它的 memory_find，或用 scripts/查原话.mjs 直接扫会话存档。
 ```
 
-只提示、不改任何东西；没装就没有这一行。
+只提示、不改任何东西；没装就没有这一行。目前只认 dsh-world 这一种写法——你装的是别的记忆插件时这行不会出现，也不影响使用。
 
 ## 安装
 
