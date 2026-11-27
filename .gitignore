@@ -10,3 +10,5 @@ docs/sample-vault/
 .DS_Store
 scripts/_*.mjs
 *.bak
+
+scripts/_*.py

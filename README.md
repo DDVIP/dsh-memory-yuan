@@ -113,14 +113,23 @@ node scripts/查原话.mjs --list                    # 只列会话，不解压�
 
 别处可能还装着别的记忆类插件，各有各的写法（有的写 jsonl、有的写 sqlite、有的在远程）。vault 只读自己目录下的 Markdown，不读别人的库，也不会互相覆盖。
 
-`memory_lint` 会顺带看看这台机器上有没有 `dsh-world`：读 `profiles/*/node_modules/dsh-world/package.json` 拿版本、读 `worlds/*/archive.sqlite` 拿归档库，检测到时在输出末尾多一行——
+`memory_lint` 会顺带看看这台机器上还有哪些记忆来源，认三类：
+
+1. **dsh-world 的原话归档**——读 `profiles/*/node_modules/dsh-world/package.json` 拿版本，读 `worlds/*/archive.sqlite` 拿归档库；
+2. **旧记忆库**——`~/.dsh/memories` 里的 `MEMORY.md` / `USER.md` / `projects/<id>/KEY.md`；
+3. **别家记忆类插件**——`profiles/*/node_modules` 下名字像记忆插件的包（`dsh-memory-*`、`dsh-world*` 等），只列名字和版本，不读它们的数据。
+
+检测到就在输出末尾多一段：
 
 ```
-共存：这台机器还装了 dsh-world 0.8.5，它的原话归档在 default 的 archive.sqlite
-（跟 vault 不互通）。原话走它的 memory_find，或用 scripts/查原话.mjs 直接扫会话存档。
+这台机器上还有别的记忆来源，vault 只读自己的 Markdown：
+- dsh-world 0.8.5，原话归档在 default 的 archive.sqlite（原话走它的 memory_find，
+  或用 scripts/查原话.mjs 直接扫会话存档）。
+- 旧记忆库还在 ~/.dsh/memories（6 个条目文件），要搬进 vault 用 memory_migrate。
+- dsh-world-room 0.1.0（自己的记忆存在自己那儿，vault 不读它）。
 ```
 
-只提示、不改任何东西；没装就没有这一行。目前只认 dsh-world 这一种写法——你装的是别的记忆插件时这行不会出现，也不影响使用。
+只提示、不改任何东西；一个都没检测到就没有这一段。这三类是实际认得的形状——别家插件写 JSONL、写远程库的，不会出现在这里，也不影响使用。
 
 ## 安装
 
