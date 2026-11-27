@@ -21,7 +21,7 @@ import { L1_DEFAULTS, buildL1, collectConversationTexts, selectL1 } from './lib/
 import { createTools } from './lib/tools.js';
 import { charCount, l0Snapshot, l1Snapshot, readHits, writeInjection, writeIndex } from './lib/snapshot.js';
 import { registerRoutes } from './lib/api.js';
-import { startDigestScheduler } from './lib/digest-scheduler.js';
+import { runDigestNow, startDigestScheduler } from './lib/digest-scheduler.js';
 
 export const name = 'memory-yuan';
 /**
@@ -146,11 +146,19 @@ export function apply(ctx, config = {}) {
   }
 
   // ---- UI：同源 HTTP 路由。webServer 是可选能力，宿主没装就只少一个 HTTP 面 ----
+  // 面板上的「重跑收盘」要模型能力（llm + settings），那在另一个作用域里；
+  // 这里用 getter 桥一层：没模型能力时 run 为 null，路由回 501 而不是假装成功。
+  let digestRunner = null;
+  const digestBridge = {
+    get run() {
+      return digestRunner;
+    },
+  };
   ctx.inject(['webServer'], (scoped) => {
     scoped.effect(
       () => {
         try {
-          return registerRoutes(scoped, { vaultPath, budget: uiBudget });
+          return registerRoutes(scoped, { vaultPath, budget: uiBudget, digest: digestBridge });
         } catch (error) {
           console.warn('[memory-yuan] UI 路由注册失败：', error?.message ?? error);
           return () => {};
@@ -163,6 +171,24 @@ export function apply(ctx, config = {}) {
   // ---- 收盘定时器：插件自己到点跑，不依赖自动化任务/工作区 ----
   // 需要 llm + settings 才能调模型；缺了就别开定时器，记忆本身照常读写。
   ctx.inject(['llm', 'settings'], (scoped) => {
+    scoped.effect(
+      () => {
+        digestRunner = (opts = {}) =>
+          runDigestNow({
+            vaultPath,
+            llm: scoped.llm,
+            settings: scoped.settings,
+            provider: config.digestProvider,
+            model: config.digestModel,
+            ...opts,
+          });
+        return () => {
+          digestRunner = null;
+        };
+      },
+      { label: 'memory-yuan: manual digest' },
+    );
+
     scoped.effect(
       () =>
         startDigestScheduler({
