@@ -59,9 +59,6 @@ export function apply(ctx, config = {}) {
   };
   const uiBudget = config.uiBudget ?? 4000;
 
-  /** L0 的 text 先于 L1 调用；L1 里写快照时直接用它，免得再选一遍。 */
-  let currentL0 = null;
-
   /** 注册一个注入段，把 "already registered" 吞掉（旧 loader 会装配两次）。 */
   const registerSection = (section, label) => {
     ctx.effect(
@@ -88,7 +85,6 @@ export function apply(ctx, config = {}) {
       text: () => {
         try {
           const selected = selectL0(loadMemories(vaultPath), options);
-          currentL0 = selected;
           return renderL0(selected, options);
         } catch (error) {
           console.warn('[memory-yuan] L0 生成失败：', error?.message ?? error);
@@ -107,7 +103,8 @@ export function apply(ctx, config = {}) {
       text: (context) => {
         try {
           const memories = loadMemories(vaultPath);
-          const selected = currentL0 ?? selectL0(memories, options);
+          // 每次自己算一遍（0.03ms）：多会话并发时共享的 currentL0 会串到别的会话上。
+          const selected = selectL0(memories, options);
           const excludeIds = new Set(selected.map((memory) => memory.id));
           // 开局（用户只说了 1–2 句）多给两条：新窗口第一句最需要上下文，之后回到常态。
           const opening = collectConversationTexts(context).length <= 2;
