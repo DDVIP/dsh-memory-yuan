@@ -22,6 +22,7 @@ import { createTools } from './lib/tools.js';
 import { charCount, l0Snapshot, l1Snapshot, readHits, writeInjection, writeIndex } from './lib/snapshot.js';
 import { registerRoutes } from './lib/api.js';
 import { runDigestNow, startDigestScheduler } from './lib/digest-scheduler.js';
+import { effectiveL1Options } from './lib/l1settings.js';
 
 export const name = 'memory-yuan';
 /**
@@ -110,7 +111,8 @@ export function apply(ctx, config = {}) {
           const excludeIds = new Set(selected.map((memory) => memory.id));
           // 开局（用户只说了 1–2 句）多给两条：新窗口第一句最需要上下文，之后回到常态。
           const opening = collectConversationTexts(context).length <= 2;
-          const recall = opening ? { ...recallOptions, maxItems: Math.max(6, recallOptions.maxItems) } : recallOptions;
+          const baseRecall = effectiveL1Options(vaultPath, recallOptions);
+          const recall = opening ? { ...baseRecall, maxItems: Math.max(6, baseRecall.maxItems) } : baseRecall;
           // 热度：L1 命中的次数（hits.json）+ 被读过（frontmatter reads）一起当强化信号。
           const hits = readHits(vaultPath);
           const recallSet = { ...recall, excludeIds, hits };
