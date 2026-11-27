@@ -7,8 +7,31 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-import { DEFAULT_VAULT } from '../lib/vault.js';
 import { apply, inject } from '../index.js';
+import { createMemory } from '../lib/store.js';
+
+// 不依赖本机真实 vault：自己造一个，写两条 pinned 样本，CI 上也能跑。
+const VAULT = fs.mkdtempSync(path.join(os.tmpdir(), 'memory-yuan-smoke-'));
+createMemory({
+  vaultPath: VAULT,
+  type: 'decision',
+  title: 'smoke 样本决策',
+  content: '这是 smoke 用的样本条目，只为让 L0 有内容可断言。',
+  importance: 90,
+  pinned: true,
+  status: 'verified',
+  confirm: true,
+});
+createMemory({
+  vaultPath: VAULT,
+  type: 'preference',
+  title: 'smoke 样本偏好',
+  content: '这是第二条样本，用来测 l0MaxItems 的截断。',
+  importance: 80,
+  pinned: true,
+  status: 'verified',
+  confirm: true,
+});
 
 let passed = 0;
 function check(name, fn) {
@@ -77,11 +100,11 @@ check('没有 webServer / llm 替身时也能 apply（兼容层）', () => {
       /* 依赖永远不就绪：什么都不该发生，也不该抛 */
     },
   };
-  assert.doesNotThrow(() => apply(bare, { vaultPath: DEFAULT_VAULT }));
+  assert.doesNotThrow(() => apply(bare, { vaultPath: VAULT }));
 });
 
 const { ctx, sections, tools } = makeCtx();
-apply(ctx, { vaultPath: DEFAULT_VAULT });
+apply(ctx, { vaultPath: VAULT });
 
 check('注册了 L0 / L1 两个注入段', () => {
   assert.ok(sections.has('memory-yuan:standing'));
@@ -117,7 +140,7 @@ check('不存在的 vault 返回空串', () => {
 
 console.log('3) 配置生效');
 const narrow = makeCtx();
-apply(narrow.ctx, { vaultPath: DEFAULT_VAULT, l0MaxItems: 1 });
+apply(narrow.ctx, { vaultPath: VAULT, l0MaxItems: 1 });
 check('l0MaxItems=1 只注入一条', () => {
   const text = narrow.sections.get('memory-yuan:standing').text();
   const bullet = text.split('\n').filter((line) => line.startsWith('- [')).length;
