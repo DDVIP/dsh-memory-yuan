@@ -4,6 +4,12 @@ import os from 'node:os';
 import path from 'node:path';
 import zlib from 'node:zlib';
 
+// 旧版 Node 没有 zstd API（Node 20/22 的 zlib 里没有 zstdCompressSync），没法造样本，直接跳过。
+if (typeof zlib.zstdCompressSync !== 'function') {
+  console.log('（这个 Node 没有 zstd API，跳过会话存档用例）');
+  process.exit(0);
+}
+
 /**
  * 出处回溯（self-test 32）：会话存档是按 zstd 帧拼接的，要能切开、能按行读、
  * 能只在用户真说的话里找线索，并且从 HTTP 层能拿到候选、写回 evidence。
