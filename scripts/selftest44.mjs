@@ -103,11 +103,12 @@ await check('GraphTab 能渲染（假 React，无 TDZ）', () => {
   assert.ok(canvas, '没渲染出 canvas');
 });
 
-await check('canvas 挂了拖拽 / 双击 / 右键处理器', () => {
+await check('canvas 挂了拖拽 / 双击 / 右键 / 滚轮处理器', () => {
   const canvas = findCanvas(tree());
   assert.equal(typeof canvas.props.onMouseDown, 'function');
   assert.equal(typeof canvas.props.onDoubleClick, 'function');
   assert.equal(typeof canvas.props.onContextMenu, 'function');
+  assert.equal(typeof canvas.props.onWheel, 'function');
   assert.equal(typeof canvas.props.onMouseMove, 'function');
   assert.equal(typeof canvas.props.onClick, 'function');
 });
@@ -134,7 +135,7 @@ await check('光标：空画布上是 grab（拖得动）', () => {
 
 await check('图例提示写了拖拽 / 双击 / 右键', () => {
   const text = JSON.stringify(tree());
-  assert.match(text, /拖拽平移/);
+  assert.match(text, /滚轮缩放/);
   assert.match(text, /双击复位/);
   assert.match(text, /右键菜单/);
 });
