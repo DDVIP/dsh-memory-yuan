@@ -1,0 +1,34 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: 全套脚本（smoke + selftest）
+        shell: bash
+        run: |
+          fail=0
+          for f in scripts/smoke.mjs scripts/smoke-l1.mjs scripts/selftest*.mjs; do
+            if ! out=$(node "$f" 2>&1); then
+              echo "::group::FAIL $f"
+              echo "$out" | tail -30
+              echo "::endgroup::"
+              fail=1
+            else
+              echo "ok $f"
+            fi
+          done
+          exit $fail
