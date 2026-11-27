@@ -1,6 +1,6 @@
 {
   "name": "dsh-memory-yuan",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "渊自己的记忆插件：文件式 vault（一条一 Markdown）+ 每轮 L0 注入 + L1 线索检索 + 十三个记忆工具 + 「这一轮带了什么」面板与星图。",
   "type": "module",
   "main": "./index.js",
