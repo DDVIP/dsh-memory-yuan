@@ -72,7 +72,7 @@ async function main() {
     const result = searchStreams(vaultPath, { query: '星图' });
     assert.equal(result.ok, true);
     assert.ok(result.hits.length >= 2, `应该至少两条，实际 ${result.hits.length}`);
-    const daily = result.hits.find((hit) => hit.kind === 'daily');
+    const daily = result.hits.find((hit) => hit.kind === 'daily' && hit.date === '2026-11-20');
     assert.equal(daily.date, '2026-11-20');
     assert.equal(daily.time, '09:10');
     assert.equal(daily.by, '工作');

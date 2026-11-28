@@ -162,6 +162,16 @@ node scripts/make-sample.mjs docs/sample-vault   # 12 条示例记忆
 node scripts/preview.mjs docs/sample-vault       # 看 L0 文本
 ```
 
+## 安全
+
+面板与星图走的是 `ctx.webServer.register` 注册的 `/memory-yuan/*` 路由。这些路由**只对 DSH 自己的页面开放**：每个请求都先过 DSH 的信任闸（`connection.requestRejection`，0.2.3 及以后是 `connection.admit`），过不了的一律 `403 {"error":"forbidden"}`。
+
+实测（本机）：无浏览器凭证的 `curl` 打 `/memory-yuan/state` 是 403，带伪造 `Origin` 也是 403；DSH 页面自己带登录凭证，正常。
+
+所以 `engines.dsh` 要求 **>=0.2.3**：更早的宿主没有这套闸，装了也不安全。
+
+排查：如果你的面板打不开（极少见，通常是宿主版本的认证方式不同），可以在插件配置里写 `gateRoutes: false` 退回「只绑本机」的老行为——那是已知不安全的模式，只用来定位问题。
+
 ## 兼容与边界
 
 - 只依赖 `systemPrompt` 与 `tools`；`webServer` / `llm` / `settings` 是可选能力，`ctx.inject` 按需挂——没装这些服务的宿主上插件照样加载，只是没有面板与收盘。

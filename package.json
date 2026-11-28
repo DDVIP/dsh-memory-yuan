@@ -1,6 +1,6 @@
 {
   "name": "dsh-memory-yuan",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "渊自己的记忆插件：文件式 vault（一条一 Markdown）+ 每轮 L0 注入 + L1 线索检索 + 十三个记忆工具 + 「这一轮带了什么」面板与星图。",
   "type": "module",
   "main": "./index.js",
@@ -12,15 +12,15 @@
     "./client": "./lib/client.js"
   },
   "engines": {
-    "dsh": ">=0.2.1-rc.2 <0.3.0-0 || >=0.2.2-rc.1 <0.3.0-0",
+    "dsh": ">=0.2.3-0 <0.3.0-0",
     "node": ">=20"
   },
   "peerDependencies": {
-    "@deepseek-ai/dsh-client-ui-slots": ">=0.2.1-rc.2 <0.3.0-0 || >=0.2.2-rc.1 <0.3.0-0",
-    "@deepseek-ai/dsh-host-webserver": ">=0.2.1-rc.2 <0.3.0-0 || >=0.2.2-rc.1 <0.3.0-0",
-    "@deepseek-ai/dsh-llm": ">=0.2.1-rc.2 <0.3.0-0 || >=0.2.2-rc.1 <0.3.0-0",
-    "@deepseek-ai/dsh-settings": ">=0.2.1-rc.2 <0.3.0-0 || >=0.2.2-rc.1 <0.3.0-0",
-    "@deepseek-ai/dsh-tools": ">=0.2.1-rc.2 <0.3.0-0 || >=0.2.2-rc.1 <0.3.0-0"
+    "@deepseek-ai/dsh-client-ui-slots": ">=0.2.3-0 <0.3.0-0",
+    "@deepseek-ai/dsh-host-webserver": ">=0.2.3-0 <0.3.0-0",
+    "@deepseek-ai/dsh-llm": ">=0.2.3-0 <0.3.0-0",
+    "@deepseek-ai/dsh-settings": ">=0.2.3-0 <0.3.0-0",
+    "@deepseek-ai/dsh-tools": ">=0.2.3-0 <0.3.0-0"
   },
   "dsh": {
     "bundle": {

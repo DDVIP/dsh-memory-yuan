@@ -144,6 +144,51 @@ export function apply(ctx, config = {}) {
     console.warn('[memory-yuan] 索引初始化失败：', error?.message ?? error);
   }
 
+  // ---- 浏览器信任闸：路由只服务 DSH 自己的页面，别的网页一律 403 ----
+  // DSH 0.2.3+ 用 connection.admit（要先声明 connection.authentication 才读得到），
+  // 更早的宿主用 connection.requestRejection；两个都没有就维持原行为（只绑本机）。
+  let gateCtx = null;
+  ctx.effect(
+    () => {
+      const scope = ctx.inject(['connection', 'connection.authentication'], (loginCtx) => {
+        gateCtx = loginCtx;
+        return () => {
+          if (gateCtx === loginCtx) gateCtx = null;
+        };
+      });
+      return () => {
+        try {
+          scope?.dispose?.();
+        } catch {}
+        gateCtx = null;
+      };
+    },
+    { label: 'memory-yuan: browser trust gate' },
+  );
+  const trustedRequest = (req) => {
+    // 排查用：配置里 gateRoutes: false 可以让路由退回「只绑本机」的老行为。
+    if (config.gateRoutes === false) return true;
+    let connection;
+    try {
+      connection = (gateCtx ?? ctx).get?.('connection');
+    } catch {
+      return false;
+    }
+    if (connection === undefined || connection === null) return true;
+    try {
+      const rejection = connection.requestRejection;
+      if (typeof rejection === 'function') return rejection.call(connection, req) === undefined;
+      const admit = connection.admit;
+      if (typeof admit === 'function') {
+        const answer = admit.call(connection, req);
+        return answer?.rejection === undefined;
+      }
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   // ---- UI：同源 HTTP 路由。webServer 是可选能力，宿主没装就只少一个 HTTP 面 ----
   // 面板上的「重跑收盘」要模型能力（llm + settings），那在另一个作用域里；
   // 这里用 getter 桥一层：没模型能力时 run 为 null，路由回 501 而不是假装成功。
@@ -157,7 +202,7 @@ export function apply(ctx, config = {}) {
     scoped.effect(
       () => {
         try {
-          return registerRoutes(scoped, { vaultPath, budget: uiBudget, digest: digestBridge });
+          return registerRoutes(scoped, { vaultPath, budget: uiBudget, digest: digestBridge, trusted: trustedRequest });
         } catch (error) {
           console.warn('[memory-yuan] UI 路由注册失败：', error?.message ?? error);
           return () => {};
